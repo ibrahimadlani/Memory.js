@@ -38,3 +38,44 @@ function addCard(symbole,parent,x,y){
     parent.appendChild(card);
 }
 
+// Fonction qui initialise le "playfield" en fonction du nombre de colonnes et de lignes//
+function init(x,y){
+    var rows = [];
+    document.getElementById("playfield").innerHTML = "";
+    for (let i = 0; i < x; i++) {
+        rows.push(addRow())
+        for (let j = 0; j < y; j++) {
+            var g = Math.ceil(Math.random()*((x*y)/2))-1;
+            while (cnt[g] == 2){
+                g = Math.ceil(Math.random()*((x*y)/2))-1;
+            }
+            cnt[g]++;
+            addCard(emojis[g],rows[i],i,j);
+        }
+    }
+}
+
+// Fonction qui gère le click utilisateur //
+async function click(elem){
+    selected.push(elem);
+        if(selected.length == 2){
+            if((selected[0].innerText == selected[1].innerText) && !(selected[0].id == selected[1].id)){
+                await new Promise(r => setTimeout(r, 700));
+                document.getElementById(selected[0].id[0]+"-"+selected[0].id[2]).innerHTML = "";
+                document.getElementById(selected[1].id[0]+"-"+selected[1].id[2]).innerHTML = "";
+                document.getElementById(selected[0].id[0]+"-"+selected[0].id[2]).classList = ["cardEmpty"];
+                document.getElementById(selected[1].id[0]+"-"+selected[1].id[2]).classList = ["cardEmpty"];
+                paires++;
+                if (paires == (colonnes*lignes)/2) {
+                    await new Promise(r => setTimeout(r, 700));
+                    document.getElementById("victoire").innerText = "VICTOIRE en "+clicks+" clicks !";
+                }
+            }
+            await new Promise(r => setTimeout(r, 400));
+            $(".card").flip(false);
+            selected = [];
+            
+        }
+    
+}
+
