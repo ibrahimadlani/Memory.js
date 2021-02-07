@@ -4,6 +4,9 @@
     outline: none;
     text-decoration: none;
     list-style: none;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    color: #454545;
 }
 
 .card {
@@ -59,7 +62,6 @@
 }
 
 #relancer, #montrer {
-    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     width: 200px;
     height: 30px;
@@ -68,7 +70,6 @@
     justify-content: center;
     align-items: center;
     border: 1px solid #454545;
-    color: #454545;
     margin: 0 10px 0 10px;
 }
 
