@@ -79,3 +79,27 @@ async function click(elem){
     
 }
 
+// Fonction qui compte les clicks et les paires //
+function add(elem){
+    if(elem.classList[0] == "card"){
+        clicks++;
+        document.getElementById("clicks").innerText = "Clicks = "+clicks;
+    }
+    document.getElementById("paires").innerText = "Paires = "+paires;
+    
+}
+
+// Fonction sleep qui marque un temps de pause en milisecondes //
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+// Fonction qui montre toutes les cartes //
+function show(){
+    $(".card").flip(true);
+}
+
+
+init(colonnes,lignes);
+
+$(".card").flip();
